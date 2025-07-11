@@ -31,11 +31,11 @@ class SessionsController {
       throw new AppError('Invalid email or password', 401);
     }
 
-    const { secret, expiresIn } = authConfig.jwt;
+    const { secret } = authConfig.jwt;
 
     const token = sign({ role: user.role ?? 'customer' }, secret, {
       subject: user.id,
-      expiresIn,
+      expiresIn: '30d',
     });
 
     const { password: hashedPassword, ...userWithoutPassword } = user;
