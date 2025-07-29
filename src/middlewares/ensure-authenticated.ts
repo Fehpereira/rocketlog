@@ -34,7 +34,6 @@ function ensureAuthenticated(
 
     return next();
   } catch (error) {
-    console.log(error);
     throw new AppError('Invalid JWT token', 401);
   }
 }
